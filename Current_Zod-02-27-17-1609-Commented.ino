@@ -87,29 +87,30 @@ void startShow() {
             break;
             
     case 3:                                                         //CUE 2
-            whitePulse(30, 15, 1, 1, 10);                           //goes from all at 60 to all at 10, though there is middle ground, every 4 pixels will hit max and low
-            break;
+            whitePulse(30, 15, 1, 1, 10);                           //goes from all at 30 to all at 15, though there is middle ground, every 4 pixels will hit max and low
+            break;						    //delay of 10 milliseconds
    
     case 4:                                                         //CUE 3 
-            twoPulse(36, 15, 0, .57, 20);                           // goes from green at 58 to 20, blue to green is .57:1
+            twoPulse(36, 15, 0, .57, 20);                           // goes from green at 36 to 15, blue to green is .57:1
             break;
 
     case 5:                                                        //CUE 3.5
-            for(int i= 26; i>0; i=i-2){                             //slow fade to black
+            for(int i= 26; i>0; i=i-2){                            //slow fade to black
               colorWipe(strip.Color(0, i, (int) (i*.57)), 0);
             }
-            cue++;                                                  //This cue will autofollow to the next
+            cue++;                                                 //This cue will autofollow to the next
             break;
 
     case 6:                                                        //CUE 4
-            rainbowCycle(10);                                        //faster rainbow cycle 5 delay
+            rainbowCycle(10);                                      //faster rainbow cycle 10 delay
             break;
     case 7:                                                        //CUE 5
-            twoPulse(30, 15, 1, 1, 40);                             //jump to white pulse for the dancers
+            twoPulse(30, 15, 1, 1, 40);                            //jump to white pulse for the dancers
+		  						   //high 30, low 15, delay of 40 milliseconds
             break;
     case 8:                                                        //CUE 6
-            for(int i= 30; i>=0; i= i-1){                           //Goes from all at 30, to out
-              colorWipe(strip.Color(i, i, i), 5);                   //Very slow fadeout at the end of the piece
+            for(int i= 30; i>=0; i= i-1){                          //Goes from all at 30, to out
+              colorWipe(strip.Color(i, i, i), 5);                  //Very slow fadeout at the end of the piece
             }
             cue++;
             break;
@@ -245,7 +246,8 @@ void rainbowCycle(uint8_t wait) {
   }
 }
 
-//Similar to the white pulse, but with ever two pixels having different values
+//Similar to the two pulse, but with ever two pixels having different values
+//will require some green to work correctly
 void whitePulse(int high, int low, double redMult, double blueMult, uint8_t wait){
   for(int j=0; j<1; j++){
     int start1 = high;
